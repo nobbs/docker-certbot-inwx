@@ -14,6 +14,7 @@ RUN set -x && apk update && apk add --no-cache --virtual .build-deps \
         openssl-dev \
         musl-dev \
         libffi-dev \
+&& apk add --no-cache tzdata \
 && pip install certbot==${CERTBOT_VERSION} certbot-dns-inwx==${INWX_VERSION} \
 && apk del .build-deps 
 
