@@ -9,6 +9,9 @@ FROM arm32v7/python:3-alpine
 # Add QEMU
 COPY --from=builder qemu-arm-static /usr/bin
 
+ENV CERTBOT_VERSION 0.38.0
+ENV INWX_VERSION 2.1.2
+
 ENTRYPOINT [ "certbot" ]
 EXPOSE 80 443
 VOLUME /etc/letsencrypt /var/lib/letsencrypt
@@ -20,5 +23,5 @@ RUN set -x && apk update && apk add --no-cache --virtual .build-deps \
         openssl-dev \
         musl-dev \
         libffi-dev \
-&& pip install certbot==0.38.0 certbot-dns-inwx==2.1.2 \
+&& pip install certbot==${CERTBOT_VERSION} certbot-dns-inwx==${INWX_VERSION} \
 && apk del .build-deps 
