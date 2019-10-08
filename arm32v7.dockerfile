@@ -9,7 +9,7 @@ FROM arm32v7/python:3-alpine
 # Add QEMU
 COPY --from=builder qemu-arm-static /usr/bin
 
-ENV CERTBOT_VERSION 0.38.0
+ENV CERTBOT_VERSION 0.39.0
 ENV INWX_VERSION 2.1.2
 
 ENTRYPOINT [ "certbot" ]
